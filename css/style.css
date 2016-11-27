@@ -1,0 +1,12 @@
+.error {
+  color: #ff0000;
+}
+
+.ng-dirty.ng-invalid,
+.ng-touched.ng-invalid {
+    border-color: #ff0000;
+}
+
+.ng-dirty.ng-valid {
+    border-color: #008000;
+}

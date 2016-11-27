@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eduweb: Front-End Dev Bootcamp</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <main class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1> Walidacja formularza z użyciem AngularJS </h1>
+          <div class="row">
+            <div class="col-md-6">
+              <form name="form" novalidate>
+                <legend>Formularz kontaktowy</legend>
+                <div ng-show="form.$submitted">
+                    <div ng-show="form.$invalid" class="alert alert-danger">
+                        Wypełnij wymagane pola!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="firstName">Imię</label>
+                  <input ng-model="form.firstame" required="required" type="text" class="form-control" name="firstName" placeholder="Imię" />
+                  <div ng-show="form.$submitted || form.firstName.$touched">
+                      <span ng-show="form.firstName.$error.required" class="error">Podaj imię</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nazwisko</label>
+                  <input type="text" class="form-control" name="lastName" placeholder="Nazwisko" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" ng-model="form.email" required="required" class="form-control" name="emailAddress" placeholder="Email" />
+                  <div ng-show="form.$submitted || form.emailAddress.$touched">
+                      <span ng-show="form.emailAddress.$error.required" class="error">Podaj adres email</span>
+                      <span ng-show="form.emailAddress.$error.email" class="error">Adres email jest niepoprawny</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Hasło</label>
+                  <input type="password" ng-model="form.password" required="required" ng-minlength="5" class="form-control" name="pwd" placeholder="Hasło" />
+                  <div ng-show="form.$submitted || form.pwd.$touched">
+                      <span ng-show="form.pwd.$error.required" class="error">Podaj hasło</span>
+                      <span ng-show="form.pwd.$error.minlength" class="error">Hasło powinno zawierac minimum 5 znakow</span>
+                  </div>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="form.checkbox" required="required" value="" name="confirm">
+                    Akceptuję regulamin
+                  </label>
+                  <div ng-show="form.$submitted || form.confirm.$touched">
+                      <span ng-show="form.confirm.$error.required" class="error">Proszę zaakceptowac regulamin</span>
+                  </div>
+                </div>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-default">Wyślij</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+  </body>
+</html>
